@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Access via JavaScript</title>
+</head>
+<body>
+    <h1>Database Data:</h1>
+    <div id="data"></div>
+    <script>
+        // Fetch data from the Node.js API
+        fetch('https://my-databaselab6-app.herokuapp.com/data')
+            .then(response => response.json())
+            .then(data => {
+                const dataDiv = document.getElementById('data');
+                data.forEach(item => {
+                    const p = document.createElement('p');
+                    p.textContent = JSON.stringify(item);
+                    dataDiv.appendChild(p);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
+
